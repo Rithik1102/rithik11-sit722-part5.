@@ -21,7 +21,7 @@ jobs:
 
 
     - name: Log in to Azure with service principal
-      run: az login --username odl_user_1410262@cloudlabs4deakin.onmicrosoft.com --password ikuh15BUB*ec --tenant e845681c-8cfd-405c-a368-5f4dc03f710b
+      run: az login --username odl_user_1410262@cloudlabs4deakin.onmicrosoft.com --password ikuh15BUB*ec
 
     - name: Run Creation.sh
       run: ./scripts/Creation.sh
