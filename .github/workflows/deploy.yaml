@@ -26,6 +26,8 @@ jobs:
     - name: Run Creation.sh
       run: ./scripts/Creation.sh
 
+
+
     - name: Extract Terraform Outputs
       id: tf_outputs
       run: |
