@@ -39,8 +39,7 @@ jobs:
        #
       # Builds the Docker image.
       #
-      - name: Creation
-        run: ./scripts/Creation.sh
+     
 
       #
       # Builds the Docker image.
