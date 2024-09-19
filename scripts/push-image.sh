@@ -26,4 +26,4 @@ docker tag inventory-management $CONTAINER_REGISTRY/inventory_management:$VERSIO
 
 
 docker push $CONTAINER_REGISTRY/book_catalog:$VERSION
-docker push $CONTAINER_REGISTRY/inventory_mangement:$VERSION
+docker push $CONTAINER_REGISTRY/inventory_management:$VERSION
