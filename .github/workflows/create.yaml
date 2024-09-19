@@ -1,1 +1,30 @@
+name: Resource creation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    - name: Log in to Azure with service principal
+      run: az login 
+    
+    - name: Set permissions for Creation.sh
+      run: terraform init
+
+
+    - name: Run Creation.sh
+      run: terraform apply -auto-approve
+
+
 
