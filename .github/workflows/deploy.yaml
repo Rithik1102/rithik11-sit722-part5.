@@ -17,7 +17,7 @@ jobs:
       uses: hashicorp/setup-terraform@v1
 
     - name: Log in to Azure with service principal
-      run: az login
+      run: az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
 
     - name: Terraform Init
       run: terraform init
@@ -32,13 +32,18 @@ jobs:
         echo "ACR_USERNAME=$(terraform output -raw acr_admin_username)" >> $GITHUB_ENV
         echo "ACR_PASSWORD=$(terraform output -raw acr_admin_password)" >> $GITHUB_ENV
 
+    - name: Install GitHub CLI
+      run: |
+        curl -s https://cli.github.com/install.sh | bash
+
+    - name: Authenticate GitHub CLI
+      run: gh auth login --with-token <<< ${{ secrets.GH_PAT }}
+
     - name: Update GitHub Secrets
-      uses: peter-evans/set-secret@v3
-      with:
-        secrets: |
-          ACR_LOGIN_SERVER=${{ env.ACR_LOGIN_SERVER }}
-          ACR_USERNAME=${{ env.ACR_USERNAME }}
-          ACR_PASSWORD=${{ env.ACR_PASSWORD }}
+      run: |
+        gh secret set ACR_LOGIN_SERVER --body "${{ env.ACR_LOGIN_SERVER }}"
+        gh secret set ACR_USERNAME --body "${{ env.ACR_USERNAME }}"
+        gh secret set ACR_PASSWORD --body "${{ env.ACR_PASSWORD }}"
 
     - name: Log in to Azure Container Registry
       run: echo ${{ env.ACR_PASSWORD }} | docker login ${{ env.ACR_LOGIN_SERVER }} -u ${{ env.ACR_USERNAME }} --password-stdin
