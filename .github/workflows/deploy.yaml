@@ -20,11 +20,8 @@ jobs:
       run: az login 
 
 
-    - name: Terraform Init
-      run: terraform init
-
-    - name: Terraform Apply
-      run: terraform apply -auto-approve
+  - name: Run Creation.sh
+      run: ./scripts/Creation.sh
 
     - name: Extract Terraform Outputs
       id: tf_outputs
