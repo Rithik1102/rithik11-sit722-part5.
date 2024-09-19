@@ -46,27 +46,27 @@ jobs:
       #
       # Builds the Docker image.
       #
-      - name: Build
-        run: ./scripts/build-image.sh
+      #- name: Build
+       # run: ./scripts/build-image.sh
 
       #
       # Publishes the Docker image to the container registry.
       #
-      - name: Publish
-        run: ./scripts/push-image.sh
+      #- name: Publish
+       # run: ./scripts/push-image.sh
 
       #
       # Installs Kubectl and connects it to the cluster.
       #
       # https://github.com/marketplace/actions/kubernetes-cli-kubectl
       #
-      - uses: tale/kubectl-action@v1
-        with:
-          base64-kube-config: ${{ secrets.KUBE_CONFIG }}
-          kubectl-version: v1.24.2
+      #- uses: tale/kubectl-action@v1
+       # with:
+        #  base64-kube-config: ${{ secrets.KUBE_CONFIG }}
+         # kubectl-version: v1.24.2
       
       #
       # Expands the configuration template and deploys the microservice.
       #
-      - name: Deploy
-        run: ./scripts/deploy.sh
+      #- name: Deploy
+        #run: ./scripts/deploy.sh
