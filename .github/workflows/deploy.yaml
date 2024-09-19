@@ -26,7 +26,7 @@ jobs:
       uses: hashicorp/setup-terraform@v1
       
     - name: Log in to Azure with service principal
-      run: 
+      run: az login --username odl_user_1410262@cloudlabs4deakin.onmicrosoft.com --password ikuh15BUB*ec
 
     - name: Terraform Init
       run: terraform init
