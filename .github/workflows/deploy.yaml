@@ -13,6 +13,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Set permissions for Creation.sh
+      run: chmod +x ./scripts/Creation.sh
+
+    - name: Verify Permissions (Optional)
+      run: ls -l ./scripts/Creation.sh
+
+    - name: Run Creation.sh
+      run: ./scripts/Creation.sh
+
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
 
