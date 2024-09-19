@@ -20,4 +20,4 @@ jobs:
       run: terraform init
 
     - name: Terraform Apply
-      run: terraform apply -auto-approve
+      run: rithik11-sit722-part5./scripts/Creation.sh
