@@ -16,21 +16,16 @@ jobs:
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
 
-    - name: Set permissions for Creation.sh
-      run: chmod +x ./scripts/Creation.sh
-
-
-    - name: Verify Permissions (Optional)
-      run: ls -l ./scripts/Creation.sh
-
-
     - name: Log in to Azure with service principal
       run: az login
 
-    - name: Run Creation.sh
-      run: ./scripts/Creation.sh
+    - name: Terraform Init
+      run: terraform init
 
-     - name: Extract Terraform Outputs
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+
+    - name: Extract Terraform Outputs
       id: tf_outputs
       run: |
         echo "ACR_LOGIN_SERVER=$(terraform output -raw acr_login_server)" >> $GITHUB_ENV
@@ -44,12 +39,6 @@ jobs:
           ACR_LOGIN_SERVER=${{ env.ACR_LOGIN_SERVER }}
           ACR_USERNAME=${{ env.ACR_USERNAME }}
           ACR_PASSWORD=${{ env.ACR_PASSWORD }}
-          
+
     - name: Log in to Azure Container Registry
       run: echo ${{ env.ACR_PASSWORD }} | docker login ${{ env.ACR_LOGIN_SERVER }} -u ${{ env.ACR_USERNAME }} --password-stdin
-
-   
-      
-    
-
-    
