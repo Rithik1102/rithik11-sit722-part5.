@@ -28,12 +28,7 @@ jobs:
 
 
 
-    - name: Extract Terraform Outputs
-      id: tf_outputs
-      run: |
-        echo "ACR_LOGIN_SERVER=$(terraform output -raw acr_login_server)" >> $GITHUB_ENV
-        echo "ACR_USERNAME=$(terraform output -raw acr_admin_username)" >> $GITHUB_ENV
-        echo "ACR_PASSWORD=$(terraform output -raw acr_admin_password)" >> $GITHUB_ENV
+   
 
     - name: Install GitHub CLI
       run: |
