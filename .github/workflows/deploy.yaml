@@ -40,7 +40,8 @@ jobs:
       # Builds the Docker image.
       #
       - name: Creation
-        run: chmod +x ./scripts/Creation.sh
+        run: git update-index --chmod=+x ./.github/scripts/Creation.sh
+        
 
       #
       # Builds the Docker image.
