@@ -20,7 +20,7 @@ jobs:
       run: az login 
 
 
-  - name: Run Creation.sh
+    - name: Run Creation.sh
       run: ./scripts/Creation.sh
 
     - name: Extract Terraform Outputs
