@@ -21,9 +21,9 @@ set -u # or set -o nounset
 : "$REGISTRY_PW"
 
 echo $REGISTRY_PW | docker login $CONTAINER_REGISTRY --username $REGISTRY_UN --password-stdin
-docker tag book_catalog $CONTAINER_REGISTRY/book_catalog:$VERSION
-docker tag inventory_management $CONTAINER_REGISTRY/inventory_management:$VERSION
+docker tag book_catalog $CONTAINER_REGISTRY/book_catalog:latest
+docker tag inventory_management $CONTAINER_REGISTRY/inventory_management:latest
 
 
-docker push $CONTAINER_REGISTRY/book_catalog:$VERSION
-docker push $CONTAINER_REGISTRY/inventory_management:$VERSION
+docker push $CONTAINER_REGISTRY/book_catalog:latest
+docker push $CONTAINER_REGISTRY/inventory_management:latest
