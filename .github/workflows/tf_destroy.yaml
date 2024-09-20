@@ -20,6 +20,9 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}  # Azure service principal credentials
+      
+      - name: Kube delete
+        run: 
 
       - name: Initialize Terraform
         run: terraform init
