@@ -17,9 +17,7 @@ jobs:
           terraform_version: 1.4.5  # Adjust to your desired version
 
       - name: Azure Login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}  # Azure service principal credentials
+        run: az login
       
       - name: Kube delete per
         run: chmod +x ./scripts/delete.sh
