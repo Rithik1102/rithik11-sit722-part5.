@@ -23,6 +23,7 @@ jobs:
       
       - name: Kube delete per
         run: chmod +x ./scripts/delete.sh
+
       
       - name: kube delete
         run: ./scripts/delete.sh 
