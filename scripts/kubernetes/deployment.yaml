@@ -16,9 +16,11 @@ spec:
       containers: 
       - name: book-catalog
         image: $CONTAINER_REGISTRY/book-catalog:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
-       
+        env:
+          - name: DATABASE_URL
+            value: "postgresql://rithik11_sit722_part5_user:aMD0j1Lyl08F16yeDZ2mVirDeN1aPpKl@dpg-crm309rv2p9s73e7nc50-a/rithik11_sit722_part5"
 
 ---
 apiVersion: v1
@@ -52,9 +54,11 @@ spec:
       containers: 
       - name: inventory-management
         image: $CONTAINER_REGISTRY/inventory-management:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001"]
-       
+        env:
+          - name: DATABASE_URL
+            value: "postgresql://rithik11_sit722_part5_user:aMD0j1Lyl08F16yeDZ2mVirDeN1aPpKl@dpg-crm309rv2p9s73e7nc50-a/rithik11_sit722_part5"
 ---
 apiVersion: v1
 kind: Service
